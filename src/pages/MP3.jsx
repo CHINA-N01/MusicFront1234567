@@ -93,10 +93,11 @@ class MP3 extends Component {
     return (
       <div>
         <img src={CD} width={this.state.imgWidth - 40} alt="a black CD"/>
+
+        <MidiPlayer src={this.props.url}/>
+        <br /><p>——请点击播放键播放音乐——</p>
+        <p>——如需提前进入下一环节，请暂停音乐后前往——</p>
         
-        <br />
-             <MidiPlayer autoplay src={this.props.url}/>
-        <br />
         <InputGroup variant="dark">
           <InputGroup.Prepend>
             <InputGroup.Text>音乐回忆</InputGroup.Text>
@@ -106,11 +107,12 @@ class MP3 extends Component {
         <br />
         {!this.state.writingComment && this.state.status === 0 &&
           <div>
-            <p>——请在文本框内输入您的音乐回忆——</p>
+            <p>——音乐播放结束后请在文本框内输入您的音乐回忆——</p>
             <br />
             <br />
-            <p>请在听完后点击<a onClick={()=> this.props.audioEnd(this.state.writingComment)} style={{"color": "blue"}}>此处</a>进入下一环节</p>
+            <p>请在听完音乐后手动点击<a onClick={()=> this.props.audioEnd(this.state.writingComment)} style={{"color": "blue"}}>此处</a>进入下一环节</p>
             <p>如果音乐无法正常加载，您可以点击<a href={this.props.url} target="_blank" rel="noopener noreferrer">此处</a>获取音源</p>
+            <p>系统异常或其他播放问题，请联系联系管理员TYH，微信：szxh20190131</p>
           </div>
         }
         {this.state.writingComment && this.state.status === 0 &&
